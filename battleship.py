@@ -1,15 +1,18 @@
 from random import randint
 
+#using a class here allows me to reset the board
 class Battleship:
 
     def __init__(self):
         self.score = 0
         self.board = []
 
+    #this function will reset the board each time so we always have the right amount of columns and rows
     def reset_board(self):
         for x in range(0, 5):
             self.board.append(["O"] * 5)
 
+    #printing board so the user can visualize
     def print_board(self):
         for row in self.board:
             print " ".join(row)
@@ -20,6 +23,7 @@ class Battleship:
     def random_col(self):
         return randint(0, len(self.board) - 1)
 
+    #starting the game:
     def play_battleShip(self):
         print "Let's play Battleship!"
         self.reset_board()
@@ -51,7 +55,6 @@ class Battleship:
         print "the answer was row:", ship_row, "column:", ship_col
         print "your score is:", self.score
         self.play_again()
-
 
 
 
