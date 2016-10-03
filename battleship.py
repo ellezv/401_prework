@@ -69,6 +69,6 @@ class Battleship:
             print "Sorry, I didn't get that. See you next time!"
 
 
-
-bs = Battleship()
-bs.play_battleShip()
+if __name__ == "__main__":
+    bs = Battleship()
+    bs.play_battleShip()
