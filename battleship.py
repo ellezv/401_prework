@@ -17,11 +17,10 @@ class Battleship:
         for row in self.board:
             print(" ".join(row))
 
-    def random_row(self):
+    #defines a random coordinate for the ship
+    def random_position(self):
         return randint(0, len(self.board)-1)
 
-    def random_col(self):
-        return randint(0, len(self.board)-1)
 
     #user input is validated, for row and column
     def user_guess(self, direction):
@@ -38,8 +37,8 @@ class Battleship:
         print("Let's play Battleship!")
         self.reset_board()
         self.print_board()
-        ship_row = self.random_row()+1
-        ship_col = self.random_col()+1
+        ship_row = self.random_position()+1
+        ship_col = self.random_position()+1
         print("You have four chances")
         for turn in range(4) :
             print("turn", turn+1)
