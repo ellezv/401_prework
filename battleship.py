@@ -23,7 +23,8 @@ class Battleship:
     def random_col(self):
         return randint(0, len(self.board)-1)
 
-    def user_guess(self, direction ):
+    #user input is validated, for row and column
+    def user_guess(self, direction):
         while True:
             try:
                 return int(input("Guess a " + direction + ": " ))
