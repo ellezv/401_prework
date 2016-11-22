@@ -9,7 +9,7 @@ class Battleship:
 
 #this function will reset the board each time so we always have the right amount of columns and rows
     def reset_board(self):
-        for x in range(0, 5):
+        for X in range(0, 5):
             self.board.append(["O"] * 5)
 
     #printing board so the user can visualize
@@ -18,10 +18,19 @@ class Battleship:
             print(" ".join(row))
 
     def random_row(self):
-        return randint(0, len(self.board) - 1)
+        return randint(0, len(self.board)-1)
 
     def random_col(self):
-        return randint(0, len(self.board) - 1)
+        return randint(0, len(self.board)-1)
+
+    def user_guess(self, direction ):
+        while True:
+            try:
+                return int(input("Guess a " + direction + ": " ))
+            except ValueError:
+                print("that's not a number!")
+
+
 
     #starting the game:
     def play_battleShip(self):
@@ -33,8 +42,8 @@ class Battleship:
         print("You have four chances")
         for turn in range(4) :
             print("turn", turn+1)
-            guess_row = int(input("Guess Row:"))
-            guess_col = int(input("Guess Col:"))
+            guess_row = self.user_guess("row")
+            guess_col = self.user_guess("column")
 
 
             if guess_row==ship_row and guess_col==ship_col :
