@@ -7,7 +7,7 @@ class Battleship:
         self.score = 0
         self.board = []
 
-#this function will reset the board each time so we always have the right amount of columns and rows
+#this function will reset the board 2 dimensional array so the player starts with a 5*5 board each time
     def reset_board(self):
         for X in range(0, 5):
             self.board.append(["O"] * 5)
@@ -26,39 +26,39 @@ class Battleship:
     def user_guess(self, direction):
         while True:
             try:
-                return int(input("Guess a " + direction + ": " ))
+                return int(input("Guess a " + direction + ": "))
             except ValueError:
                 print("that's not a number!")
 
 
 
     #starting the game:
-    def play_battleShip(self):
+    def play_battleship(self):
         print("Let's play Battleship!")
         self.reset_board()
         self.print_board()
         ship_row = self.random_position()+1
         ship_col = self.random_position()+1
         print("You have four chances")
-        for turn in range(4) :
+        for turn in range(4):
             print("turn", turn+1)
             guess_row = self.user_guess("row")
             guess_col = self.user_guess("column")
 
 
-            if guess_row==ship_row and guess_col==ship_col :
+            if guess_row == ship_row and guess_col == ship_col:
                 print("Congratulations! You sank my battleship!")
                 self.score += 1
                 break
-            else :
-                if (guess_row < 1 or guess_row > 5) or (guess_col < 1 or guess_col > 5) :
+            else:
+                if (guess_row < 1 or guess_row > 5) or (guess_col < 1 or guess_col > 5):
                     print("Oops, that's not even in the ocean.")
-                elif self.board[guess_row-1][guess_col-1]== "X" :
+                elif self.board[guess_row-1][guess_col-1] == "X":
                     print("You guessed that one already.")
-                else :
+                else:
                     print("You missed my battleship!")
-                    self.board[guess_row-1][guess_col-1]= "X"
-                    if turn ==3 :
+                    self.board[guess_row-1][guess_col-1] = "X"
+                    if turn == 3:
                         print("Sorry, game over")
             self.print_board()
         print("the answer was row:", ship_row, "column:", ship_col)
@@ -69,15 +69,15 @@ class Battleship:
 
     def play_again(self):
         answer = input("Want to play again? y/n ")
-        if answer == "n" :
+        if answer == "n":
             print("Alright, bye!")
         elif answer == "y":
             self.board = []
-            self.play_battleShip()
+            self.play_battleship()
         else:
             print("Sorry, I didn't get that. See you next time!")
 
 
 if __name__ == "__main__":
     bs = Battleship()
-    bs.play_battleShip()
+    bs.play_battleship()
