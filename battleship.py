@@ -1,4 +1,7 @@
+from __future__ import print_function
 from random import randint
+
+
 
 #using a class here allows me to reset the board
 class Battleship:
