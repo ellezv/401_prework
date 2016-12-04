@@ -1,5 +1,6 @@
 from __future__ import print_function
 from random import randint
+import sys
 
 
 
@@ -71,7 +72,7 @@ class Battleship:
 
 
     def play_again(self):
-        answer = input("Want to play again? y/n ")
+        answer = get_input("Want to play again? y/n: ")
         if answer == "n":
             print("Alright, bye!")
         elif answer == "y":
@@ -82,5 +83,13 @@ class Battleship:
 
 
 if __name__ == "__main__":
+    # Support Python 2 and 3 input
+    # Default to Python 3's input()
+    get_input = input
+
+    # If this is Python 2, use raw_input()
+    if sys.version_info[:2] <= (2, 7):
+        get_input = raw_input
+
     bs = Battleship()
     bs.play_battleship()
